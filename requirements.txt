@@ -1,3 +1,7 @@
+Flask
 Requests
 Flake8
 pytest
+fastapi
+httpx
+uvicorn
