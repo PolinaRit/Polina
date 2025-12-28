@@ -12,6 +12,7 @@ def get_orders():
     """Получить список всех заказов"""
     return jsonify(orders)
 
+
 @app.route('/orders', methods=['POST'])
 def create_order():
     """Создать новый заказ"""
@@ -20,6 +21,7 @@ def create_order():
     order['id'] = len(orders) + 1
     orders.append(order)
     return jsonify(order), 201
+
 
 if __name__ == '__main__':
     app.run(port=5002, debug=True)

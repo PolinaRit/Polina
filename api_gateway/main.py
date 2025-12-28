@@ -26,6 +26,7 @@ async def get_products():
     except httpx.HTTPError as e:
         raise HTTPException(status_code=503, detail=f"Products service unavailable: {str(e)}")
 
+
 @app.get("/products/{product_id}")
 async def get_product(product_id: int):
     """Получить товар по ID через Products Service"""
@@ -38,6 +39,7 @@ async def get_product(product_id: int):
             return response.json()
     except httpx.HTTPError as e:
         raise HTTPException(status_code=503, detail=f"Products service unavailable: {str(e)}")
+
 
 # === МАРШРУТЫ ДЛЯ ЗАКАЗОВ ===
 
@@ -52,6 +54,7 @@ async def get_orders():
     except httpx.HTTPError as e:
         raise HTTPException(status_code=503, detail=f"Orders service unavailable: {str(e)}")
 
+
 @app.post("/orders")
 async def create_order(order: dict):
     """Создать новый заказ через Orders Service"""
@@ -62,6 +65,7 @@ async def create_order(order: dict):
             return response.json()
     except httpx.HTTPError as e:
         raise HTTPException(status_code=503, detail=f"Orders service unavailable: {str(e)}")
+
 
 # === МАРШРУТЫ ДЛЯ КЛИЕНТОВ ===
 
@@ -75,6 +79,7 @@ async def get_customers():
             return response.json()
     except httpx.HTTPError as e:
         raise HTTPException(status_code=503, detail=f"Customers service unavailable: {str(e)}")
+
 
 @app.get("/customers/{customer_id}")
 async def get_customer(customer_id: int):

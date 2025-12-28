@@ -17,6 +17,7 @@ def index():
     """Главная страница"""
     return render_template('index.html')
 
+
 @app.route('/products')
 def products():
     """Страница списка товаров"""
@@ -28,6 +29,7 @@ def products():
     except httpx.HTTPError as e:
         flash(f"Ошибка загрузки товаров: {str(e)}", "error")
         return render_template('products.html', products=[])
+
 
 @app.route('/orders', methods=['GET', 'POST'])
 def orders():
@@ -47,6 +49,7 @@ def orders():
         except (httpx.HTTPError, ValueError) as e:
             flash(f"Ошибка создания заказа: {str(e)}", "error")
 
+
     # GET-запрос: показываем список заказов
     try:
         response = httpx.get(f"{API_GATEWAY_URL}/orders", timeout=TIMEOUT)
@@ -56,6 +59,7 @@ def orders():
     except httpx.HTTPError as e:
         flash(f"Ошибка загрузки заказов: {str(e)}", "error")
         return render_template('orders.html', orders=[])
+
 
 @app.route('/customers')
 def customers():
@@ -68,6 +72,7 @@ def customers():
     except httpx.HTTPError as e:
         flash(f"Ошибка загрузки клиентов: {str(e)}", "error")
         return render_template('customers.html', customers=[])
+
 
 if __name__ == '__main__':
     app.run(port=5004, debug=True)

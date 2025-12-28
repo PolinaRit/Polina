@@ -7,6 +7,7 @@ def client():
     with app.test_client() as client:
         yield client
 
+
 def test_get_products(client):
     """Проверка, что эндпоинт /products возвращает JSON"""
     rv = client.get('/products')
