@@ -12,7 +12,7 @@ def get_orders():
     """Получить список всех заказов"""
     return jsonify(orders)
 
-# пример
+# пример Делаю изменение
 @app.route('/orders', methods=['POST'])
 def create_order():
     """Создать новый заказ"""
